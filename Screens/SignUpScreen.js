@@ -62,7 +62,7 @@ const styles = StyleSheet.create({
     borderColor: 'gray',
     borderWidth: 1,
     marginBottom: 12,
-    padding: 10,
+    padding: 40,
   },
 });
 

@@ -61,6 +61,8 @@ const AddressScreen = ({ navigation }) => {
       <Button title="Save Address" onPress={handleSaveAddress} />
       
       {message ? <Text style={styles.message}>{message}</Text> : null}
+
+      <Button title="Profile"  onPress={() => navigation.navigate('Profile')} />
     </View>
   );
 };

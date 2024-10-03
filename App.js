@@ -8,20 +8,23 @@ import SignInScreen from './Screens/SignInScreen';
 import SignUpScreen from './Screens/SignUpScreen';
 import AddressScreen from './Screens/AddressScreen';
 import DeliveryScreen from './Screens/Delivery/delivery';
+import { ToastProvider } from 'react-native-toast-notifications';
 
 const Stack = createNativeStackNavigator();
 
 export default function App() {
   return (
-    <NavigationContainer>
-      <Stack.Navigator initialRouteName="Home">
-        <Stack.Screen name="Home" component={HomeScreen} />
-        <Stack.Screen name="Sign In" component={SignInScreen} />
-        <Stack.Screen name="Sign Up" component={SignUpScreen} />
-        <Stack.Screen name="Address" component={AddressScreen} />
-        <Stack.Screen name="Delivery" component={DeliveryScreen} />
+    <ToastProvider placement='top' offsetTop={100} animationType='zoom-in'>
+      <NavigationContainer>
+        <Stack.Navigator initialRouteName="Sign Up">
+          <Stack.Screen name="Home" component={HomeScreen} />
+          <Stack.Screen name="Sign In" component={SignInScreen} />
+          <Stack.Screen name="Sign Up" component={SignUpScreen} />
+          <Stack.Screen name="Address" component={AddressScreen} />
+          <Stack.Screen name="Delivery" component={DeliveryScreen} />
 
-      </Stack.Navigator>
-    </NavigationContainer>
+        </Stack.Navigator>
+      </NavigationContainer>    
+    </ToastProvider>
   );
 }

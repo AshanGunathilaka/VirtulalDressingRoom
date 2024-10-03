@@ -42,10 +42,10 @@ const SignUpScreen = ({ navigation }) => {
 
   return (
     <View style={styles.container}>
-      <Text>Sign Up</Text>
+      <Text style={styles.title}>Sign Up</Text>
       <View style={{ marginBottom: 20 }} />
 
-      <Text>Full Name</Text>
+      <Text style={styles.label}>Full Name</Text>
       <TextInput
         style={styles.input}
         placeholder="Full Name"
@@ -53,25 +53,26 @@ const SignUpScreen = ({ navigation }) => {
         onChangeText={setName}
       />
 
-      <Text>Email</Text>
+      <Text style={styles.label}>Email</Text>
       <TextInput
         style={styles.input}
         placeholder="Email"
         value={email}
         onChangeText={setEmail}
-        keyboardType="email-address"  
-        email-address       
+        keyboardType="email-address"      
       />
       
-      <Text>Phone Number</Text>
+      <Text style={styles.label}>Phone Number</Text>
       <TextInput
         style={styles.input}
         placeholder="Phone Number"
         value={phonenumber}
         onChangeText={setPhonenumber}
+        keyboardType="numeric"
+        maxLength={10}
       />
       
-      <Text>Password</Text>
+      <Text style={styles.label}>Password</Text>
       <TextInput
         style={styles.input}
         placeholder="Password"
@@ -80,7 +81,7 @@ const SignUpScreen = ({ navigation }) => {
         secureTextEntry
       />
 
-      <Text>Re-enter Password</Text>
+      <Text style={styles.label}>Re-enter Password</Text>
         <TextInput
           style={styles.input}
           placeholder="Re-enter Password"
@@ -88,13 +89,17 @@ const SignUpScreen = ({ navigation }) => {
           onChangeText={setReenterpassword}
           secureTextEntry
       />
-      <View style={{ marginBottom: 20 }} />
-      <Button title="Sign Up" onPress={signUp} />
-      <View style={{ marginBottom: 20 }} />
-      <Button
-        title="Already have an account? Sign In"
-        onPress={() => navigation.navigate('Sign In')}
-      />
+      <View style={styles.buttonContainer}>
+        <Button title="Sign Up" onPress={signUp} color="#424ef5" />
+      </View>
+
+      <View style={styles.buttonContainer}>
+        <Button
+          title="Already have an account? Sign In"
+          onPress={() => navigation.navigate('Sign In')}
+          color="#424ef5"
+        />
+      </View>
     </View>
   );
 };
@@ -104,13 +109,32 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     padding: 20,
+    backgroundColor: '#f5f5f5', 
+  },
+  title: {
+    fontSize: 24,
+    fontWeight: 'bold',
+    marginBottom: 20,
+    textAlign: 'center',
+    color: '#6200EE', 
+  },
+  label: {
+    fontSize: 16,
+    color: '#333', 
+    marginBottom: 5,
   },
   input: {
-    height: 40,
-    borderColor: 'gray',
+    height: 50,
+    borderColor: '#ccc',
     borderWidth: 1,
-    marginBottom: 12,
-    padding: 10,
+    marginBottom: 15,
+    paddingHorizontal: 10,
+    backgroundColor: '#fff', 
+    borderRadius: 8, 
+  },
+  buttonContainer: {
+    marginVertical: 10,
+    borderRadius: 10,
   },
 });
 

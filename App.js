@@ -16,7 +16,7 @@ export default function App() {
   return (
     <ToastProvider placement='top' offsetTop={100} animationType='zoom-in'>
       <NavigationContainer>
-        <Stack.Navigator initialRouteName="Sign Up">
+        <Stack.Navigator initialRouteName="Home">
           <Stack.Screen name="Home" component={HomeScreen} />
           <Stack.Screen name="Sign In" component={SignInScreen} />
           <Stack.Screen name="Sign Up" component={SignUpScreen} />

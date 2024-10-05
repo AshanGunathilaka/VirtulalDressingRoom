@@ -17,6 +17,12 @@ const HomeScreen = ({ navigation }) => {
        title="Delivery Schedule"
        onPress={() => navigation.navigate('Delivery')}
      />
+
+<Text>Item Display</Text>
+     <Button
+       title="Item Display"
+       onPress={() => navigation.navigate('Display')}
+     />
     </View>
     
     

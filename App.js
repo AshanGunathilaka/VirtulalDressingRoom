@@ -9,6 +9,7 @@ import SignUpScreen from './Screens/SignUpScreen';
 import AddressScreen from './Screens/AddressScreen';
 import DeliveryScreen from './Screens/Delivery/delivery';
 import ProfileScreen from './Screens/Profile';
+import DisplayScreen from './Screens/DisplayScreen'
 import { ToastProvider } from 'react-native-toast-notifications';
 
 const Stack = createNativeStackNavigator();
@@ -24,6 +25,7 @@ export default function App() {
           <Stack.Screen name="Address" component={AddressScreen} />
           <Stack.Screen name="Delivery" component={DeliveryScreen} />
           <Stack.Screen name="Profile" component={ProfileScreen} />
+          <Stack.Screen name="Display" component={DisplayScreen} />
 
         </Stack.Navigator>
       </NavigationContainer>    

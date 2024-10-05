@@ -18,7 +18,30 @@ const DeliveryScreen = ({ navigation }) => {
   const [deliveryStatus] = useState('Pending'); // Default status
   const [message, setMessage] = useState('');
 
+  const validateFields = () => {
+    // Check if required fields are filled
+    if (!name || !item || !street || !city || !postalCode || !province || !phoneNo || !preferredDate || !preferredTime) {
+      Alert.alert('Error', 'Please fill all required fields.');
+      return false;
+    }
+    // Validate phone number (assuming it's 10 digits)
+    if (!/^\d{10}$/.test(phoneNo)) {
+      Alert.alert('Error', 'Please enter a valid phone number.');
+      return false;
+    }
+    // Validate postal code (assuming 5-6 digit postal code)
+    if (!/^\d{5,6}$/.test(postalCode)) {
+      Alert.alert('Error', 'Please enter a valid postal code.');
+      return false;
+    }
+    return true;
+  };
+
   const handleSaveDelivery = async () => {
+    if (!validateFields()) {
+      return; // Stop if validation fails
+    }
+
     const userDelivery = {
       name,
       item,
@@ -91,6 +114,7 @@ const DeliveryScreen = ({ navigation }) => {
           placeholder="Postal Code"
           value={postalCode}
           onChangeText={setCode}
+          keyboardType="numeric"
         />
         <Text style={styles.title}>Province</Text>
         <TextInput
@@ -105,6 +129,7 @@ const DeliveryScreen = ({ navigation }) => {
           placeholder="Phone Number"
           value={phoneNo}
           onChangeText={setPhone}
+          keyboardType="numeric"
         />
         <Text style={styles.title}>Preferred Date</Text>
         <TextInput
@@ -127,7 +152,7 @@ const DeliveryScreen = ({ navigation }) => {
           value={addNote}
           onChangeText={setNote}
         />
-        
+
         <TouchableOpacity style={styles.button} onPress={handleSaveDelivery}>
           <Text style={styles.buttonText}>Save Delivery</Text>
         </TouchableOpacity>
@@ -141,33 +166,33 @@ const DeliveryScreen = ({ navigation }) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#f8f8f8', // light background color
+    backgroundColor: '#f8f8f8',
     padding: 20,
   },
   title: {
-    fontSize: 18, // reduced the size for more clarity
+    fontSize: 18,
     marginBottom: 10,
-    textAlign: 'left', // aligns text to the left
-    color: '#333', // darker text color
-    fontWeight: 'bold', // bold title
+    textAlign: 'left',
+    color: '#333',
+    fontWeight: 'bold',
   },
   input: {
     height: 45,
-    borderColor: '#ccc', // lighter border color
+    borderColor: '#ccc',
     borderWidth: 1,
-    borderRadius: 8, // rounded corners for inputs
+    borderRadius: 8,
     marginBottom: 15,
     paddingHorizontal: 10,
-    backgroundColor: '#fff', // white background for inputs
+    backgroundColor: '#fff',
   },
   button: {
-    backgroundColor: '#007BFF', // primary button color
+    backgroundColor: '#007BFF',
     paddingVertical: 12,
     borderRadius: 8,
     marginTop: 10,
   },
   buttonText: {
-    color: '#fff', // white text for button
+    color: '#fff',
     fontSize: 16,
     textAlign: 'center',
     fontWeight: 'bold',
